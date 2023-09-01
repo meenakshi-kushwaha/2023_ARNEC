@@ -60,7 +60,7 @@ asia_pac_mort <- asia_pac_mort %>%
 
 
 # categories map - diff color scale
-map_4 <- asia_pac_mort %>% 
+my_map <- asia_pac_mort %>% 
   ggplot(aes(x = long, y = lat, group = group, fill = val_cat)) +
   geom_polygon(colour = "white") +
   scale_fill_brewer(type = "seq", palette = "RdPu") +
@@ -78,13 +78,6 @@ map_4 <- asia_pac_mort %>%
         legend.text = element_text(face = "bold"),
         legend.position = c(0.1, 0.25))
 
-map_4
-ggsave(width = 8, height = 10, path = here("plots"), filename = "map5.jpg")
+my_map
+ggsave(width = 8, height = 10, path = here("plots"), filename = str_glue("{Sys.time()}_map.jpg"))
 
-
-# test code ---------------------------------------------------------------
-
-test <- map_data("world")
-
-ggplot(asia_pacific, aes(x = long, y = lat, group = group)) +
-  geom_polygon()
